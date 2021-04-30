@@ -25,7 +25,7 @@ Created during MLE Chapter day in an attempt to try and run the code from this a
         --repo https://storage.googleapis.com/seldon-charts \
         --set usageMetrics.enabled=true \
         --namespace seldon-system \
-        --set istio.enabled=true
+        --set ambassador.enabled=true
     ```
 
 ### Prepare project
