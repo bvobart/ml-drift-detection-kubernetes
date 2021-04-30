@@ -12,12 +12,21 @@ Created during MLE Chapter day in an attempt to try and run the code from this a
 ### Prepare Kubernetes environment
 
 1. Run `minikube start` to start up a local Kubernetes
-2. Install [Knative](https://knative.dev/docs/install/install-eventing-with-yaml/) Eventing:
+2. Install [Knative](https://knative.dev/docs/install/install-eventing-with-yaml/) Eventing to the K8s cluster:
     ```sh
     kubectl apply -f https://github.com/knative/eventing/releases/download/v0.22.0/eventing-crds.yaml
     kubectl apply -f https://github.com/knative/eventing/releases/download/v0.22.0/eventing-core.yaml
     ```
-3. 
+3. Install [Seldon Core](https://github.com/SeldonIO/seldon-core/#install-seldon-core) to the K8s cluster:
+    ```
+    kubectl create namespace seldon-system
+
+    helm install seldon-core seldon-core-operator \
+        --repo https://storage.googleapis.com/seldon-charts \
+        --set usageMetrics.enabled=true \
+        --namespace seldon-system \
+        --set istio.enabled=true
+    ```
 
 ### Prepare project
 
